@@ -1,0 +1,2 @@
+# Wymagane środowisko
+# Python 3.10+
