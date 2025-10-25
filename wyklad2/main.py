@@ -1,6 +1,13 @@
+"""
+Gra: MoonLanding z autopilotem fuzzy
+Autor: Cyprian i Roland
+"""
+
 import pygame
 from random import randint
 from math import sin, cos
+import numpy as np
+import skfuzzy as fuzz
 
 # --- Inicjalizacja ---
 pygame.init()
@@ -49,7 +56,18 @@ game_state = ''
 color_left = color_right = BLACK
 color_glow = WHITE
 wing_intensity = 255
+autopilot_enabled = False
 pygame.key.set_repeat(100, 100)
+
+# --- Fuzzy logic setup ---
+dx_range = np.arange(-200, 201, 1)
+dy_range = np.arange(0, 401, 1)
+vy_range = np.arange(0, 51, 1)
+
+dx_left = fuzz.trapmf(dx_range, [-200, -200, -50, -10])
+dx_right = fuzz.trapmf(dx_range, [10, 50, 200, 200])
+dy_low = fuzz.trapmf(dy_range, [0, 0, 30, 80])
+vy_fast = fuzz.trapmf(vy_range, [20, 30, 50, 50])
 
 # --- Główna pętla gry ---
 running = True
@@ -60,7 +78,6 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
-                # Reset gry
                 x = randint(10, SCREEN_SIZE - 10)
                 y = 10
                 vx = vy = 0
@@ -70,7 +87,10 @@ while running:
                 color_glow = WHITE
                 wing_intensity = 255
 
-            if fuel > 0:
+            if event.key == pygame.K_a:
+                autopilot_enabled = not autopilot_enabled
+
+            if fuel > 0 and not autopilot_enabled:
                 if event.key == pygame.K_SPACE:
                     vy -= 2
                     fuel -= 5
@@ -83,6 +103,35 @@ while running:
                     vx -= 2
                     fuel -= 5
                     color_right = WHITE
+
+    # --- Autopilot fuzzy ---
+    if autopilot_enabled and game_state == '':
+        platform_center = (mountain_x[platform_index - 1] + mountain_x[platform_index]) / 2
+        dx = x - platform_center
+        dy = mountain_y[platform_index] - y
+
+        dx = max(-200, min(200, dx))
+        dy = max(0, min(400, dy))
+        vy = max(0, min(50, vy))
+
+        dx_left_val = fuzz.interp_membership(dx_range, dx_left, dx)
+        dx_right_val = fuzz.interp_membership(dx_range, dx_right, dx)
+        dy_low_val = fuzz.interp_membership(dy_range, dy_low, dy)
+        vy_fast_val = fuzz.interp_membership(vy_range, vy_fast, vy)
+
+        if dx_right_val > 0.5 and fuel > 0:
+            vx -= 2
+            fuel -= 5
+            color_right = WHITE
+        elif dx_left_val > 0.5 and fuel > 0:
+            vx += 2
+            fuel -= 5
+            color_left = WHITE
+
+        if dy_low_val > 0.5 and vy_fast_val > 0.5 and fuel > 0:
+            vy -= 2
+            fuel -= 5
+            color_left = color_right = WHITE
 
     # --- Fizyka ---
     if game_state == '' and (x < 0 or x > SCREEN_SIZE):
@@ -97,9 +146,9 @@ while running:
     if (y + 8) >= mountain_y[platform_index] and mountain_x[platform_index - 1] < x < mountain_x[platform_index] and vy < 30:
         game_state = 'LANDING'
 
-    # --- Kolizje ---
+    # --- Kolizje (poprawione) ---
     for i in range(mountain_count):
-        if game_state == '' and mountain_x[i] <= x <= mountain_x[i + 1] and (mountain_y[i] <= y or mountain_y[i + 1] <= y):
+        if game_state == '' and mountain_x[i] <= x <= mountain_x[i + 1] and (y + 5 >= min(mountain_y[i], mountain_y[i + 1])):
             color_right = 1
             color_glow = BLACK
             game_state = 'CRASH'
@@ -126,7 +175,9 @@ while running:
     pygame.draw.line(DISPLAY, color_right, (int(x - 2), int(y + 5)), (int(x), int(y + 9)))
 
     # --- HUD ---
-    status = f'FUEL {fuel:3d}     ALT {SCREEN_SIZE - int(y):3d}     VERT SPD {int(vy):3d}     HORZ SPD {int(vx):3d}'
+    status = f'FUEL {fuel:3d}  ALT {SCREEN_SIZE - int(y):3d}  VERT SPD {int(vy):3d}  HORZ SPD {int(vx):3d}'
+    if autopilot_enabled:
+        status += '  AUTOPILOT ON'
     surface = FONT.render(status, False, WHITE)
     DISPLAY.blit(surface, (0, SCREEN_SIZE - 12))
     color_left = color_right = BLACK
