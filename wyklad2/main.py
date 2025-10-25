@@ -1,8 +1,3 @@
-"""
-Gra: MoonLanding z autopilotem fuzzy
-Autor: Cyprian i Roland
-"""
-
 import pygame
 from random import randint
 from math import sin, cos
@@ -50,7 +45,7 @@ mountain_y[platform_index] = mountain_y[platform_index - 1]
 x = randint(10, SCREEN_SIZE - 10)
 y = 10
 vx = vy = 0
-fuel = SCREEN_SIZE
+fuel = 5000
 radius = 5
 game_state = ''
 color_left = color_right = BLACK
@@ -81,7 +76,7 @@ while running:
                 x = randint(10, SCREEN_SIZE - 10)
                 y = 10
                 vx = vy = 0
-                fuel = SCREEN_SIZE
+                fuel = 5000
                 radius = 5
                 game_state = ''
                 color_glow = WHITE
@@ -119,14 +114,15 @@ while running:
         dy_low_val = fuzz.interp_membership(dy_range, dy_low, dy)
         vy_fast_val = fuzz.interp_membership(vy_range, vy_fast, vy)
 
-        if dx_right_val > 0.5 and fuel > 0:
-            vx -= 2
-            fuel -= 5
-            color_right = WHITE
-        elif dx_left_val > 0.5 and fuel > 0:
-            vx += 2
-            fuel -= 5
-            color_left = WHITE
+        if fuel > 0:
+            # dynamiczne sterowanie poziome
+            horizontal_thrust = 6 * dx_left_val - 6 * dx_right_val
+            vx += horizontal_thrust
+            fuel -= int(abs(horizontal_thrust))
+            if horizontal_thrust > 0:
+                color_left = WHITE
+            elif horizontal_thrust < 0:
+                color_right = WHITE
 
         if dy_low_val > 0.5 and vy_fast_val > 0.5 and fuel > 0:
             vy -= 2
@@ -142,11 +138,17 @@ while running:
         x = (10 * x + vx) / 10
         y = (10 * y + vy) / 10
 
-    # --- Lądowanie ---
-    if (y + 8) >= mountain_y[platform_index] and mountain_x[platform_index - 1] < x < mountain_x[platform_index] and vy < 30:
+    # --- Lądowanie (tylko na płaskim) ---
+    platform_slope = abs(mountain_y[platform_index] - mountain_y[platform_index - 1])
+    platform_y = (mountain_y[platform_index] + mountain_y[platform_index - 1]) / 2
+
+    if y + radius >= platform_y \
+            and mountain_x[platform_index - 1] < x < mountain_x[platform_index] \
+            and abs(vy) < 30 \
+            and platform_slope <= 10:
         game_state = 'LANDING'
 
-    # --- Kolizje (poprawione) ---
+    # --- Kolizje ---
     for i in range(mountain_count):
         if game_state == '' and mountain_x[i] <= x <= mountain_x[i + 1] and (y + 5 >= min(mountain_y[i], mountain_y[i + 1])):
             color_right = 1
@@ -175,7 +177,7 @@ while running:
     pygame.draw.line(DISPLAY, color_right, (int(x - 2), int(y + 5)), (int(x), int(y + 9)))
 
     # --- HUD ---
-    status = f'FUEL {fuel:3d}  ALT {SCREEN_SIZE - int(y):3d}  VERT SPD {int(vy):3d}  HORZ SPD {int(vx):3d}'
+    status = f'FUEL {fuel:4d}  ALT {SCREEN_SIZE - int(y):3d}  VERT SPD {int(vy):3d}  HORZ SPD {int(vx):3d}'
     if autopilot_enabled:
         status += '  AUTOPILOT ON'
     surface = FONT.render(status, False, WHITE)
