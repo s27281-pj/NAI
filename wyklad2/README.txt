@@ -1,5 +1,3 @@
-Oczywiście, Cyprian — oto wersja README w formacie .txt, gotowa do zapisania jako README.txt:
-
 MoonLanding: Fuzzy Autopilot Simulation
 MoonLanding to symulacja lądowania statku kosmicznego na powierzchni księżyca, oparta na logice rozmytej typu 1.
 Gra została stworzona w Pygame i zawiera dynamiczny autopilot, który analizuje pozycję, wysokość i prędkość,
