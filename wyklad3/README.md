@@ -89,3 +89,12 @@ Dane testowe związane są z ocenami użytkowników w formacie .CSV:
 ## Struktura Plików Projektu
 
 Poniżej znajduje się struktura katalogów oraz plików projektu:
+    ├── data_train/ # Dane treningowe 
+    ├── test_data/ # Dane testowe │ ├── export.csv # Surowe dane testowe .CSV │ ├── export.json # Dane testowe w formacie JSON │ ├── prepare_test_data.py # Skrypt przekształcania danych testowych │ ├── test_movies.csv # Dane testowe (filmy) │ ├── test_ratings.csv # Dane testowe (oceny) │ └── test_users.csv # Dane testowe (użytkownicy) ├── venv/ # Środowisko wirtualne ├── main.py # Główny plik projektu ├── recommender.py # Moduł rekomendacji filmów ├── requirements.txt # Lista zależności └── README.md # Dokumentacja projektu
+
+## Autorzy
+
+Projekt został stworzony przez:
+
+- **Roland**
+- **Cyprian**
