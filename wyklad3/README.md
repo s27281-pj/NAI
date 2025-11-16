@@ -1,62 +1,91 @@
-# Projekt: System rekomendacji filmów/seriali oparty na ocenach
+# Projekt: System Rekomendacji Filmów/Seriali oparty na Ocenach
 
 
 ## Wymagania
 - Python 3.10+
 
+---
 
-## Instalacja środowiska
+## Instrukcja Instalacji i Konfiguracji
+
+### 1. Tworzenie środowiska wirtualnego
+Aby skonfigurować środowisko dla tego projektu:
+
 1. Utwórz środowisko wirtualne:
-python3 -m venv venv
+   ```bash
+   python3 -m venv venv
+   ```
 
 2. Aktywuj środowisko:
-- Windows:
-  ```.\venv\Scripts\Activate.ps1```
-- Linux/macOS:
-  ```source venv/bin/activate```
+   - **Windows**:
+     ```powershell
+     .\venv\Scripts\Activate.ps1
+     ```
+   - **Linux/macOS**:
+     ```bash
+     source venv/bin/activate
+     ```
 
 3. (Opcjonalnie) Zainstaluj zależności:
-```pip install -r requirements.txt```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+---
 
+## Przygotowanie Danych
 
+### 1. Dane Treningowe
+Proces przygotowania danych treningowych wymaga następujących kroków:
 
-## Przygotowanie Danych Treningowych
-### Dane treningowe
+1. **Pobierz dane treningowe**:
+    - Zalecany do edukacji i rozwoju: [MovieLens Latest Datasets](https://grouplens.org/datasets/movielens/latest/)
+    - Przykład: MovieLens Small, zawiera 100,000 ocen i 3,600 tagów dotyczących 9,000 filmów przez 600 użytkowników (Ostatnia aktualizacja: 09/2018).
 
-1. Wybór danych treningowych
-   
-    MovieLens Latest Datasets recommended for education and development
-   
-    These datasets will change over time, and are not appropriate for reporting research results. We will keep the download links stable for automated downloads. We will not archive or make available previously released versions.
+2. **Konwersja skali ocen** (0-5 → 0-10):
+   ```bash
+   python3 convert_ratings.py
+   ```
 
-    Small: 100,000 ratings and 3,600 tag applications applied to 9,000 movies by 600 users. Last updated 9/2018.
-   
-    Permalink: https://grouplens.org/datasets/movielens/latest/
+3. **Oczyszczanie danych**:
+   Oczyść dane, aby przygotować je do dalszego użycia:
+   ```bash
+   python3 clean_data_test.py
+   ```
 
-2. Konwersja ocen ze skali 0-5 na 0-10.
-- ```python3 convert_ratings.py```
+---
 
-3. Oczyszczanie i przygotowanie danych
-- ```python3 clean_data_test.py```
+### 2. Dane Testowe
+Dane testowe związane są z ocenami użytkowników w formacie .CSV:
 
+1. **Eksportowanie ocen użytkownika**:
+   Dane w formacie `.CSV` (comma-separated values). Przykład:
+   ```plaintext
+   Roland Liedtke,1670,10,Nowy Papież,10,Sukcesja,8,Ostre Przedmioty,8,Wielkie Kłamstewka,9
+   ```
 
-## Przygotowanie Danych Testowych
-### Dane testowe
-- Exportowanie danych z ankiety w formacie .CSV (comma-separated values)
-    > Roland Liedtke,1670,10,Nowy Papież,10,Sukcesja ,8,Ostre Przedmioty,8,Wielkie Kłamstewka,9
+2. **Konwersja z formatu `.CSV` do `.JSON`**:
+   Przykładowo:
+   ```json
+   {
+       "Roland Liedtke": [
+           {"title": "1670", "rating": 10},
+           {"title": "Nowy Papież", "rating": 10},
+           {"title": "Sukcesja", "rating": 8},
+           {"title": "Ostre Przedmioty", "rating": 8},
+           {"title": "Wielkie Kłamstewka", "rating": 9}
+       ]
+   }
+   ```
 
-- Konwersja danch .CSV do formatu .JSON
-    > "Roland Liedtke": [
-    {"title": "1670", "rating": 10},
-    {"title": "Nowy Papież", "rating": 10},
-    {"title": "Sukcesja ", "rating": 8},
-    {"title": "Ostre Przedmioty", "rating": 8},
-    {"title": "Wielkie Kłamstewka", "rating": 9}]
+3. **Przygotowanie danych testowych**:
+   Dostosowanie danych testowych do formatu treningowego:
+   ```bash
+   python3 convert_data_test.py
+   ```
 
-- Konwersja danych do formatu danych treningowych
-- ```python3 convert_data_test.py```
+---
 
+## Struktura Plików Projektu
 
-## Autorzy
-Roland i Cyprian
+Poniżej znajduje się struktura katalogów oraz plików projektu:
