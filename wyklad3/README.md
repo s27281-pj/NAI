@@ -13,6 +13,8 @@
     {"title": "Ostre Przedmioty", "rating": 8},
     {"title": "Wielkie Kłamstewka", "rating": 9}]
 
+- Konwersja danych do formatu danych treningowych
+
 ### Dane treningowe
 
 1. Wybór danych treningowych
@@ -25,13 +27,13 @@
    
     Permalink: https://grouplens.org/datasets/movielens/latest/
 
-3. Konwersja ocen ze skali 0-5 na 0-10.
-
+2. Konwersja ocen ze skali 0-5 na 0-10.
+3. Oczyszczanie i przygotowanie danych
 
 ## Przygotowanie Środowiska
 - ```python3 -m venv venv```
 - ```source venv/bin/activate```
 - ```pip install pandas numpy scikit-learn requests openpyxl```
-- ```python3 ratings_convert.py```
-
-
+- ```python3 convert_ratings.py```
+- ```python3 convert_data_test.py```
+- ```python3 clean_data_test.py```
