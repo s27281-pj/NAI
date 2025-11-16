@@ -1,8 +1,9 @@
 import json
 import pandas as pd
 
+
 # === 1. Wczytanie danych JSON ===
-with open("data_test/dane.json", "r", encoding="utf-8") as f:
+with open("export.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 ratings_list = []
@@ -11,6 +12,7 @@ next_movie_id = 1
 
 user_to_id = {}  # mapowanie użytkownik → userId
 next_user_id = 1
+
 
 # === 2. Przetwarzanie danych do ratingów i tworzenie map filmów ===
 for user, movies in data.items():
@@ -36,13 +38,22 @@ for user, movies in data.items():
             "rating": rating
         })
 
+
 # === 3. Zapis ratings.csv ===
 df_ratings = pd.DataFrame(ratings_list)
-df_ratings.to_csv("data_test/test_ratings.csv", index=False)
+df_ratings.to_csv("test_data/test_ratings.csv", index=False)
+
 
 # === 4. Zapis movies.csv ===
 movies_list = [{"movieId": mid, "title": title} for title, mid in movie_to_id.items()]
 df_movies = pd.DataFrame(movies_list).sort_values(by="movieId")
-df_movies.to_csv("data_test/test_movies.csv", index=False)
+df_movies.to_csv("test_data/test_movies.csv", index=False)
 
-print("Gotowe! Zapisano ratings.csv oraz movies.csv")
+
+# === 5. Zapis users.csv ===
+users_list = [{"userId": uid, "userName": uname} for uname, uid in user_to_id.items()]
+df_users = pd.DataFrame(users_list).sort_values(by="userId")
+df_users.to_csv("test_data/test_users.csv", index=False)
+
+
+print("Gotowe! Zapisano test_ratings.csv oraz test_movies.csv oraz test_users.csv")

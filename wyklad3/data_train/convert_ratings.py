@@ -2,7 +2,7 @@ import pandas as pd
 
 
 # === 1. Wczytanie danych z CSV ===
-df = pd.read_csv("data_train/ratings.csv")
+df = pd.read_csv("ratings.csv")
 # print(df.head())
 
 

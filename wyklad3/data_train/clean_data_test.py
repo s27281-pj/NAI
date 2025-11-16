@@ -1,8 +1,8 @@
 import pandas as pd
 
 # === 1. Wczytanie danych ===
-ratings = pd.read_csv("data_train/ratings.csv")
-movies = pd.read_csv("data_train/movies.csv")
+ratings = pd.read_csv("ratings.csv")
+movies = pd.read_csv("movies.csv")
 
 # === 2. Usuwanie braków danych ===
 ratings = ratings.dropna()           # usuwa wiersze gdzie brak userId/movieId/rating

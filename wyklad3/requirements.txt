@@ -1,3 +1,5 @@
 # Wymagane środowisko
 # Python 3.10+
-pandas numpy scikit-learn requests openpyxl
+pandas
+numpy
+scikit-learn
