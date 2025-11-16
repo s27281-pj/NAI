@@ -1,3 +1,9 @@
+"""
+    Projekt: System rekomendacji filmów/seriali oparty na ocenach
+    Autor: Roland i  Cyprian
+    Zasady: https://github.com/s27281-pj/NAI/tree/master/wyklad3#readme
+    Środowisko: Python 3.10+, venv,
+"""
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.neighbors import NearestNeighbors

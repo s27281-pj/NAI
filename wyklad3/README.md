@@ -1,20 +1,27 @@
-# Projekt: System rekomendacji filmów/seriali oparty na treści
+# Projekt: System rekomendacji filmów/seriali oparty na ocenach
 
-## Przygotowanie Danych
-### Dane testowe
-- Exportowanie danych z ankiety w formacie .CSV (comma-separated values)
-    > Roland Liedtke,1670,10,Nowy Papież,10,Sukcesja ,8,Ostre Przedmioty,8,Wielkie Kłamstewka,9
 
-- Konwersja danch .CSV do formatu .JSON
-    > "Roland Liedtke": [
-    {"title": "1670", "rating": 10},
-    {"title": "Nowy Papież", "rating": 10},
-    {"title": "Sukcesja ", "rating": 8},
-    {"title": "Ostre Przedmioty", "rating": 8},
-    {"title": "Wielkie Kłamstewka", "rating": 9}]
+## Wymagania
+- Python 3.10+
 
-- Konwersja danych do formatu danych treningowych
 
+## Instalacja środowiska
+1. Utwórz środowisko wirtualne:
+python3 -m venv venv
+
+2. Aktywuj środowisko:
+- Windows:
+  ```.\venv\Scripts\Activate.ps1```
+- Linux/macOS:
+  ```source venv/bin/activate```
+
+3. (Opcjonalnie) Zainstaluj zależności:
+```pip install -r requirements.txt```
+
+
+
+
+## Przygotowanie Danych Treningowych
 ### Dane treningowe
 
 1. Wybór danych treningowych
@@ -28,12 +35,28 @@
     Permalink: https://grouplens.org/datasets/movielens/latest/
 
 2. Konwersja ocen ze skali 0-5 na 0-10.
-3. Oczyszczanie i przygotowanie danych
-
-## Przygotowanie Środowiska
-- ```python3 -m venv venv```
-- ```source venv/bin/activate```
-- ```pip install pandas numpy scikit-learn requests openpyxl```
 - ```python3 convert_ratings.py```
-- ```python3 convert_data_test.py```
+
+3. Oczyszczanie i przygotowanie danych
 - ```python3 clean_data_test.py```
+
+
+## Przygotowanie Danych Testowych
+### Dane testowe
+- Exportowanie danych z ankiety w formacie .CSV (comma-separated values)
+    > Roland Liedtke,1670,10,Nowy Papież,10,Sukcesja ,8,Ostre Przedmioty,8,Wielkie Kłamstewka,9
+
+- Konwersja danch .CSV do formatu .JSON
+    > "Roland Liedtke": [
+    {"title": "1670", "rating": 10},
+    {"title": "Nowy Papież", "rating": 10},
+    {"title": "Sukcesja ", "rating": 8},
+    {"title": "Ostre Przedmioty", "rating": 8},
+    {"title": "Wielkie Kłamstewka", "rating": 9}]
+
+- Konwersja danych do formatu danych treningowych
+- ```python3 convert_data_test.py```
+
+
+## Autorzy
+Roland i Cyprian
