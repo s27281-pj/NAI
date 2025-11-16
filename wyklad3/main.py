@@ -1,45 +1,39 @@
-"""
-    Projekt: System rekomendacji filmów/seriali oparty na ocenach
-    Autor: Roland i Cyprian
-    Zasady: https://github.com/s27281-pj/NAI/tree/master/wyklad3#readme
-    Środowisko: Python 3.10+, venv, pandas, numpy, scikit-learn
-"""
-
 import pandas as pd
-from sklearn.preprocessing import OneHotEncoder
+
+
+# Wczytaj dane treningowe i testowe
+train_data = pd.read_csv('train_data/train_data.csv')
+test_data = pd.read_csv('test_data/test_data.csv')
+
+
+# Tworzymy macierz UserID x MovieID
+user_movies_matrix = train_data.pivot( index='userId', columns='movieId', values = "rating" ).reset_index(drop=True)
+user_movies_matrix.fillna( 0, inplace = True )
+user_movies_matrix=pd.DataFrame(user_movies_matrix)
+
+
+# Macierz UserID x UserID z wyliczonymi wartościami podobieństwa między każdym użytkownikiem.
+from sklearn.metrics.pairwise import pairwise_distances
+users_similarity = 1 - pairwise_distances( user_movies_matrix, metric="correlation" )
+users_similarity_df = pd.DataFrame( users_similarity )
+
+
 from sklearn.neighbors import NearestNeighbors
 
-movies = pd.read_csv('train_data/movies.csv')
-ratings = pd.read_csv('train_data/ratings.csv')
+model = NearestNeighbors(metric="cosine", algorithm="brute")
+model.fit(train_data)
 
 
+def recommend_for_user(user_id, n_neighbors=2):
+    user = train_data.iloc[user_id].values.reshape(1, -1)
+    distances, indices = model.kneighbors(user, n_neighbors=n_neighbors + 1)
+    similar_users = indices[0][1:]  # pomijamy samego użytkownika
 
-# Extracting the genres column
-genres = movies['genres']
+    user_ratings = train_data.iloc[user_id]
+    unseen = user_ratings[user_ratings == 0].index  # filmy bez oceny
 
-# Creating an instance of the OneHotEncoder
-encoder = OneHotEncoder()
+    scores = train_data.loc[similar_users, unseen].mean().sort_values(ascending=False)
+    return scores
 
-# Fitting and transforming the genres column
-genres_encoded = encoder.fit_transform(genres.values.reshape(-1, 1))
-
-
-# Creating an instance of the NearestNeighbors class
-recommender = NearestNeighbors(metric='cosine')
-
-# Fitting the encoded genres to the recommender
-recommender.fit(genres_encoded.toarray())
-
-# Index of the movie the user has previously watched
-movie_index = 0
-
-# Number of recommendations to return
-num_recommendations = 5
-
-# Getting the recommendations
-_, recommendations = recommender.kneighbors(genres_encoded[movie_index].toarray(), n_neighbors=num_recommendations)
-
-# Extracting the movie titles from the recommendations
-recommended_movie_titles = movies.iloc[recommendations[0]]['title']
-
-print(recommended_movie_titles)
+print("Polecane dla użytkownika 0:")
+print(recommend_for_user(0))

@@ -1,5 +1,8 @@
 # Projekt: System Rekomendacji Filmów/Seriali oparty na Ocenach
+Dla prostej implementacji opartej na ocenach najlepiej sprawdzi się Collaborative Filtering (Filtrowanie Współpracujące). Najłatwiejsze do wdrożenia są metody oparte na podobieństwie.
 
+Metoda: User-Based Collaborative Filtering (UBCF)
+Ta metoda polega na znajdowaniu użytkowników podobnych do aktywnego użytkownika, a następnie rekomendowaniu mu filmów, które ci podobni użytkownicy wysoko ocenili.
 
 ## Wymagania
 - Python 3.10+
@@ -17,14 +20,14 @@ Aby skonfigurować środowisko dla tego projektu:
    ```
 
 2. Aktywuj środowisko:
-   - **Windows**:
-     ```powershell
-     .\venv\Scripts\Activate.ps1
-     ```
-   - **Linux/macOS**:
-     ```bash
-     source venv/bin/activate
-     ```
+    - **Windows**:
+      ```powershell
+      .\venv\Scripts\Activate.ps1
+      ```
+    - **Linux/macOS**:
+      ```bash
+      source venv/bin/activate
+      ```
 
 3. (Opcjonalnie) Zainstaluj zależności:
    ```bash
@@ -86,23 +89,32 @@ Dane testowe związane są z ocenami użytkowników w formacie .CSV:
 
 ---
 
+
+
 ## Struktura Plików Projektu
 
 Poniżej znajduje się struktura katalogów oraz plików projektu:
 
-      ├── data_train/                                   # Dane treningowe 
       ├── test_data/                                    # Dane testowe 
       │ ├── export.csv                                  # Surowe dane testowe .CSV
       │ ├── export.json                                 # Dane testowe w formacie JSON
       │ ├── prepare_test_data.py                        # Skrypt przekształcania danych testowych
       │ ├── test_movies.csv                             # Dane testowe (filmy)
       │ ├── test_ratings.csv                            # Dane testowe (oceny)
-      │ └── test_users.csv                              # Dane testowe (użytkownicy) 
+      │ └── test_users.csv                              # Dane testowe (użytkownicy)
+      ├── train_data/                                   # Dane treningowe
+      │ ├── links.csv                                   # Surowe dane testowe .CSV
+      │ ├── movies.csv                                  # Surowe dane testowe .CSV
+      │ ├── movies_clean.csv                            # Przygotowane dane treningowe
+      │ ├── prepare_train_data.py                       # Skrypt przekształcania danych treningowych
+      │ ├── ratings.csv                                 # Surowe dane treningowe .CSV
+      │ ├── ratings_clean.csv                           # Przygotowane dane treningowe .CSV
+      │ └── README.txt                                  # Dataset info
       ├── venv/                                         # Środowisko wirtualne 
       ├── main.py                                       # Główny plik projektu 
-      ├── recommender.py                                # Moduł rekomendacji filmów 
-      ├── requirements.txt                              # Lista zależności 
-      └── README.md                                     # Dokumentacja projektu
+      ├── README.md                                     # Dokumentacja projektu
+      ├── recommender.py                                # Moduł rekomendacji filmów
+      └── requirements.txt                              # Lista zależności
 
 ## Autorzy
 

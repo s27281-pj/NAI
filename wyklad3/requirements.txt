@@ -1,5 +1,5 @@
 # Wymagane środowisko
 # Python 3.10+
 pandas
-numpy
-scikit-learn
+numpy >= 1.11.0
+scikit-learn >= 0.22.0

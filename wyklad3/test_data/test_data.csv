@@ -1,0 +1,416 @@
+userId,userName,movieId,movieName,rating
+1,Paweł Czapiewski,1,1670,9.0
+1,Paweł Czapiewski,2,Jak sprzedawać dragi w sieci (szybko),8.0
+1,Paweł Czapiewski,3,Samce Alfa,9.0
+1,Paweł Czapiewski,4,Lucyfer,3.0
+1,Paweł Czapiewski,5,Niebieskoki Samuraj,9.0
+1,Paweł Czapiewski,6,Barbarzyńcy,9.0
+1,Paweł Czapiewski,7,Para Idealna,7.0
+1,Paweł Czapiewski,8,Rojst,8.0
+1,Paweł Czapiewski,9,Polowanie na Czerwony Październik,10.0
+1,Paweł Czapiewski,10,7,10.0
+1,Paweł Czapiewski,11,The Big Bang Theory,8.0
+1,Paweł Czapiewski,12,Braveheart,10.0
+1,Paweł Czapiewski,13,The Expanse,7.0
+1,Paweł Czapiewski,14,Miasteczko South Park,9.0
+1,Paweł Czapiewski,15,Kraina Lodu,5.0
+1,Paweł Czapiewski,16,Dziennik Bridget Jones,6.0
+1,Paweł Czapiewski,17,Kapitan Ameryka: Wojna bohaterów,3.0
+1,Paweł Czapiewski,18,Avengers: Czas Ultrona,2.0
+1,Paweł Czapiewski,19,Terminator 2,9.0
+1,Paweł Czapiewski,20,Planeta Singli,7.0
+1,Paweł Czapiewski,21,List do M.,7.0
+1,Paweł Czapiewski,22,List do M. 2,2.0
+1,Paweł Czapiewski,23,Forrest Gump,10.0
+1,Paweł Czapiewski,24,Ex Machina,10.0
+1,Paweł Czapiewski,25,Gran Torino,9.0
+1,Paweł Czapiewski,26,Cicha Noc,1.0
+1,Paweł Czapiewski,27,Battleship: Bitwa o Ziemię,1.0
+1,Paweł Czapiewski,28,Narodziny Gwiazdy,2.0
+1,Paweł Czapiewski,29,Kapitan Phillips,9.0
+1,Paweł Czapiewski,30,Grand Budapest Hotel,9.0
+1,Paweł Czapiewski,31,Wyjazd integracyjny,1.0
+1,Paweł Czapiewski,32,John Wick,7.0
+1,Paweł Czapiewski,33,Narcos,10.0
+1,Paweł Czapiewski,34,Terminal,8.0
+1,Paweł Czapiewski,35,Ona,8.0
+1,Paweł Czapiewski,36,Whiplash,10.0
+1,Paweł Czapiewski,37,Diabeł ubiera się u Prady,9.0
+1,Paweł Czapiewski,38,La Casa De Papel,8.0
+1,Paweł Czapiewski,39,Peaky Blinders,9.0
+1,Paweł Czapiewski,40,Contratiempo,9.0
+1,Paweł Czapiewski,41,La Cara Oculta,10.0
+2,Marek Lewańczyk,42,Harry Potter i Insygnia Smierci cz. 2,9.0
+2,Marek Lewańczyk,43,Avengers: Endgame,9.0
+2,Marek Lewańczyk,44,Więzień Labiryntu,6.0
+2,Marek Lewańczyk,45,911: Texas,9.0
+2,Marek Lewańczyk,46,911,9.0
+2,Marek Lewańczyk,47,Genialna Morgan,8.0
+2,Marek Lewańczyk,48,Last Of Us,7.0
+2,Marek Lewańczyk,49,Breslau,7.0
+2,Marek Lewańczyk,50,The Greatest Showman,10.0
+2,Marek Lewańczyk,51,The Walking Dead,7.0
+2,Marek Lewańczyk,52,Stranger Things,8.0
+2,Marek Lewańczyk,53,Jak wytresować smoka?,10.0
+2,Marek Lewańczyk,54,Nasze Magiczne Encanto,7.0
+2,Marek Lewańczyk,55,Vaiana,8.0
+2,Marek Lewańczyk,15,Kraina Lodu,4.0
+2,Marek Lewańczyk,56,Strażnicy Galaktyki,10.0
+2,Marek Lewańczyk,57,Diuna,8.0
+2,Marek Lewańczyk,58,W lesie dziś nie zaśnie nikt,1.0
+2,Marek Lewańczyk,59,Iron Man,4.0
+2,Marek Lewańczyk,60,Iron Man 2,5.0
+2,Marek Lewańczyk,61,Iron Man 3,5.0
+2,Marek Lewańczyk,62,Wakanda w moim sercu,10.0
+2,Marek Lewańczyk,63,Coco,8.0
+3,Aleksander Bastek,64,Lista Schindlera,9.0
+3,Aleksander Bastek,65,Pulp Fiction,10.0
+3,Aleksander Bastek,66,Kontakt,7.0
+3,Aleksander Bastek,67,Lśnienie,8.0
+3,Aleksander Bastek,68,The Room,2.0
+3,Aleksander Bastek,69,Diuna 1,6.0
+3,Aleksander Bastek,4,Lucyfer,4.0
+3,Aleksander Bastek,70,Dark,6.0
+3,Aleksander Bastek,71,Gwiezdne Wojny: Przebudzenie Mocy,3.0
+3,Aleksander Bastek,72,Suma wszystkich strachów,5.0
+3,Aleksander Bastek,73,Rec 3: Geneza,1.0
+4,Katarzyna Kasperek,70,Dark,10.0
+4,Katarzyna Kasperek,74,Skazany na śmierć,8.0
+4,Katarzyna Kasperek,75,Dexter,8.0
+4,Katarzyna Kasperek,76,The Pitt,8.0
+4,Katarzyna Kasperek,77,Wieloryb,10.0
+4,Katarzyna Kasperek,78,Squid Game,3.0
+4,Katarzyna Kasperek,79,Adolescence,7.0
+4,Katarzyna Kasperek,80,Black Mirror,10.0
+4,Katarzyna Kasperek,81,Orange is the new balck,7.0
+4,Katarzyna Kasperek,82,Pętla,2.0
+4,Katarzyna Kasperek,83,Zielona mila,9.0
+4,Katarzyna Kasperek,84,365 dni,1.0
+4,Katarzyna Kasperek,85,Boże Ciało,9.0
+4,Katarzyna Kasperek,86,Saltrburn,7.0
+5,Kamil Bogdański,87,Rock,9.0
+5,Kamil Bogdański,88,twój vincent,9.0
+5,Kamil Bogdański,89,Platforma 2,4.0
+5,Kamil Bogdański,90,Fight club,9.0
+5,Kamil Bogdański,91,blade runner 2049,10.0
+5,Kamil Bogdański,92,Pingwin,8.0
+5,Kamil Bogdański,93,Joker: Folie à deux,3.0
+5,Kamil Bogdański,94,Napoleon,4.0
+5,Kamil Bogdański,95,Kobiety Mafii,2.0
+6,Klaudia Denert,96,Bojack Horseman,8.0
+6,Klaudia Denert,97,The Sopranos,10.0
+6,Klaudia Denert,98,The Office,10.0
+6,Klaudia Denert,99,Dobre Miejsce,2.0
+6,Klaudia Denert,6,Barbarzyńcy,8.0
+6,Klaudia Denert,100,Dzień świra,10.0
+6,Klaudia Denert,101,Big Mouth,2.0
+6,Klaudia Denert,102,The Ranch,1.0
+6,Klaudia Denert,103,Norsemen,8.0
+6,Klaudia Denert,7,Para Idealna,7.0
+6,Klaudia Denert,104,Reniferek,7.0
+6,Klaudia Denert,105,TY,10.0
+6,Klaudia Denert,106,Kim jest Anna,8.0
+6,Klaudia Denert,1,1670,8.0
+6,Klaudia Denert,16,Dziennik Bridget Jones,10.0
+6,Klaudia Denert,107,50 Twarzy Greya,1.0
+6,Klaudia Denert,108,Zaginiona dziewczyna,10.0
+6,Klaudia Denert,109,Insatiable,4.0
+7,Kamil Koniak,110,Skazani na Shawshank (The Shawshank Redemption),10.0
+7,Kamil Koniak,111,Lot nad kukułczym gniazdem (One Flew Over the Cuckoo's Nest),9.0
+7,Kamil Koniak,112,Pi,8.0
+7,Kamil Koniak,113,Ex-Machina,8.0
+7,Kamil Koniak,114,Eagle Eye,9.0
+7,Kamil Koniak,115,Źródło (The Fountain),6.0
+7,Kamil Koniak,116,Święta góra (The Holy Mountain),5.0
+7,Kamil Koniak,117,Klucz do koszmaru (The Skeleton Key),6.0
+7,Kamil Koniak,118,Przesmyk,6.0
+7,Kamil Koniak,119,Podziemny krąg (Fight Club),8.0
+7,Kamil Koniak,120,Sala samobójców. Hejter,5.0
+7,Kamil Koniak,121,Kod dostępu (Swordfish),6.0
+7,Kamil Koniak,122,Incepcja (Inception),6.0
+7,Kamil Koniak,123,Matrix,8.0
+7,Kamil Koniak,124,Mroczna pieśń (A dark song),4.0
+7,Kamil Koniak,125,Milczenie owiec (The Silence of the Lambs),6.0
+7,Kamil Koniak,126,Joker,5.0
+7,Kamil Koniak,127,Buntownik z wyboru (Good Will Hunting),7.0
+7,Kamil Koniak,128,W pogoni za szczęściem (The Pursuit of Happyness),4.0
+7,Kamil Koniak,129,Interstellar,6.0
+7,Kamil Koniak,130,Requiem dla snu (Requiem for a Dream),6.0
+7,Kamil Koniak,131,W sieci zła (Fallen),8.0
+7,Kamil Koniak,132,W objęciach węża (El abrazo de la serpiente),9.0
+7,Kamil Koniak,133,Gra (The game),6.0
+7,Kamil Koniak,134,Seksmisja,10.0
+7,Kamil Koniak,135,Efekt motyla (The Butterfly Effect),6.0
+7,Kamil Koniak,136,Morderstwa w Oxford (The Oxford Murders),5.0
+7,Kamil Koniak,137,Symetria,5.0
+7,Kamil Koniak,138,Trener (Coach Carter),6.0
+7,Kamil Koniak,139,Uprowadzona (Taken),5.0
+7,Kamil Koniak,140,K-Pax,8.0
+7,Kamil Koniak,141,Chappie,7.0
+7,Kamil Koniak,142,"Ja, Robot (I, Robot)",7.0
+7,Kamil Koniak,143,Dziewiąte wrota (The Ninth Gate),6.0
+7,Kamil Koniak,144,Tożsamość Bourne'a (The Bourne Identity),7.0
+7,Kamil Koniak,145,Jestem bogiem (Limitless),5.0
+7,Kamil Koniak,146,Ona (Her),7.0
+7,Kamil Koniak,147,Lucy,6.0
+7,Kamil Koniak,148,Truman show,5.0
+7,Kamil Koniak,149,Miasto grzechu (Sin City),5.0
+7,Kamil Koniak,150,V (V for Vendetta),5.0
+7,Kamil Koniak,151,Mechanik (El Maquinista),6.0
+7,Kamil Koniak,152,Plan doskonały (Inside Man),5.0
+7,Kamil Koniak,153,Rocky,5.0
+7,Kamil Koniak,154,Odyseja kosmiczna (2001: A Space Odyssey),9.0
+7,Kamil Koniak,155,Wielki Mike (The Blind Side),4.0
+7,Kamil Koniak,156,Inni (The Others),7.0
+7,Kamil Koniak,157,Zaginiona dziewczyna (Gone Girl),5.0
+7,Kamil Koniak,158,W głowie się nie mieści (Inside Out),4.0
+7,Kamil Koniak,159,Oppenheimer,6.0
+7,Kamil Koniak,160,Łowca androidów (Blade Runner),6.0
+8,Cyprian Czerwiński,161,Zombie strippers,8.0
+8,Cyprian Czerwiński,162,Killer tomatoes,7.0
+8,Cyprian Czerwiński,163,Toxic avenger,9.0
+8,Cyprian Czerwiński,164,Iron sky,8.0
+8,Cyprian Czerwiński,165,Sky Sharks,7.0
+8,Cyprian Czerwiński,166,Lexx,8.0
+8,Cyprian Czerwiński,167,Nuke'em high,6.0
+8,Cyprian Czerwiński,168,Yeti a gay love story,8.0
+8,Cyprian Czerwiński,169,Zemsta Embriona/The suckling,7.0
+8,Cyprian Czerwiński,170,Truma's war,6.0
+8,Cyprian Czerwiński,171,Substancja,9.0
+8,Cyprian Czerwiński,172,Rodzaje Życzliwości,9.0
+8,Cyprian Czerwiński,173,Biedne Istoty,8.0
+8,Cyprian Czerwiński,174,Rebel Moon,2.0
+8,Cyprian Czerwiński,56,Strażnicy Galaktyki,8.0
+8,Cyprian Czerwiński,175,Barbie,2.0
+8,Cyprian Czerwiński,176,Communion,9.0
+8,Cyprian Czerwiński,177,Openheimer,7.0
+8,Cyprian Czerwiński,178,Swiss Army Man,10.0
+8,Cyprian Czerwiński,179,"Wszystko, wszędzien naraz",9.0
+8,Cyprian Czerwiński,180,The new Barbarians,4.0
+8,Cyprian Czerwiński,181,The Demonicas,6.0
+8,Cyprian Czerwiński,182,Wszyscy Moi przyjaciele nie żyją,6.0
+8,Cyprian Czerwiński,183,JOJO Rabit,9.0
+8,Cyprian Czerwiński,184,Men & Chicken,10.0
+8,Cyprian Czerwiński,185,Pewnego razu w hollywood,8.0
+8,Cyprian Czerwiński,186,Wielkie Piękno,8.0
+8,Cyprian Czerwiński,187,Święta Góra,9.0
+8,Cyprian Czerwiński,188,Parasite,9.0
+8,Cyprian Czerwiński,189,Kto pilnuje Oliwera,5.0
+8,Cyprian Czerwiński,190,Zwierzęta,6.0
+8,Cyprian Czerwiński,191,Spiskowcy Rozkoszy,8.0
+8,Cyprian Czerwiński,192,Mały Otik,9.0
+8,Cyprian Czerwiński,193,Plan 9 z kosmosu,5.0
+8,Cyprian Czerwiński,194,Niemiłość,9.0
+8,Cyprian Czerwiński,195,Lovewitch,8.0
+8,Cyprian Czerwiński,196,Kingsman,10.0
+8,Cyprian Czerwiński,197,Nowy Początek,10.0
+8,Cyprian Czerwiński,198,Krwawa Uczta,7.0
+8,Cyprian Czerwiński,199,The killing of satan,6.0
+8,Cyprian Czerwiński,200,Big Short,8.0
+8,Cyprian Czerwiński,201,Lobster,7.0
+8,Cyprian Czerwiński,202,Kawa i Papierosy,9.0
+8,Cyprian Czerwiński,203,Sin City,6.0
+8,Cyprian Czerwiński,204,Fargo,9.0
+8,Cyprian Czerwiński,205,Sicario,9.0
+8,Cyprian Czerwiński,206,Ex_MACHINA,9.0
+8,Cyprian Czerwiński,207,Birdman,9.0
+8,Cyprian Czerwiński,208,Lewiatan,10.0
+8,Cyprian Czerwiński,209,Paprika,9.0
+8,Cyprian Czerwiński,210,Martwe zło,6.0
+9,Robert Michałowski,211,Przełęcz ocalonych,10.0
+9,Robert Michałowski,25,Gran Torino,9.0
+9,Robert Michałowski,212,Skazani na Shawshank,9.0
+9,Robert Michałowski,213,Gra o Tron,9.0
+9,Robert Michałowski,214,Suits,9.0
+9,Robert Michałowski,215,Nietykalni,8.0
+9,Robert Michałowski,216,Dom z papieru,7.0
+9,Robert Michałowski,175,Barbie,2.0
+9,Robert Michałowski,95,Kobiety Mafii,2.0
+9,Robert Michałowski,217,Bad boy,1.0
+9,Robert Michałowski,218,Kac Wawa,1.0
+9,Robert Michałowski,84,365 dni,2.0
+10,Mateusz Szotyński,219,Shrek,10.0
+10,Mateusz Szotyński,220,Kac Vegas I,10.0
+10,Mateusz Szotyński,215,Nietykalni,8.0
+10,Mateusz Szotyński,221,Straszny film,3.0
+10,Mateusz Szotyński,1,1670,8.0
+10,Mateusz Szotyński,129,Interstellar,7.0
+10,Mateusz Szotyński,32,John Wick,9.0
+10,Mateusz Szotyński,222,Incepcja,7.0
+10,Mateusz Szotyński,223,Dr. House,9.0
+10,Mateusz Szotyński,224,Batman,7.0
+10,Mateusz Szotyński,225,Fight Club,10.0
+10,Mateusz Szotyński,2,Jak sprzedawać dragi w sieci (szybko),6.0
+10,Mateusz Szotyński,226,Breaking Bad,9.0
+10,Mateusz Szotyński,227,Farciarz Gilmore,10.0
+10,Mateusz Szotyński,228,Super tata,9.0
+10,Mateusz Szotyński,229,Tedd,10.0
+10,Mateusz Szotyński,230,Żona na niby,9.0
+10,Mateusz Szotyński,20,Planeta Singli,7.0
+10,Mateusz Szotyński,231,Marley i ja,9.0
+10,Mateusz Szotyński,232,Bruce Wszechmogący,10.0
+10,Mateusz Szotyński,233,Millerowie,9.0
+10,Mateusz Szotyński,234,Furia,8.0
+10,Mateusz Szotyński,235,Star Wars,3.0
+10,Mateusz Szotyński,236,Spider man,2.0
+11,Michał Małolepszy,222,Incepcja,10.0
+11,Michał Małolepszy,77,Wieloryb,7.0
+11,Michał Małolepszy,237,Pszczelarz,6.0
+11,Michał Małolepszy,238,Biedne istoty,7.0
+11,Michał Małolepszy,239,Ruchomy chaos,6.0
+11,Michał Małolepszy,240,Na noże,6.0
+11,Michał Małolepszy,241,Skrytka,8.0
+11,Michał Małolepszy,242,Wszystko wszędzie naraz,4.0
+11,Michał Małolepszy,57,Diuna,8.0
+11,Michał Małolepszy,243,Glass,7.0
+11,Michał Małolepszy,244,Odkrycie,7.0
+11,Michał Małolepszy,245,Zostaw świat za sobą,7.0
+11,Michał Małolepszy,246,Old,7.0
+11,Michał Małolepszy,247,Cloverfield Lane 10,7.0
+11,Michał Małolepszy,248,Recepta na przekręt,8.0
+11,Michał Małolepszy,249,Bielmo,7.0
+11,Michał Małolepszy,250,Synchronic,5.0
+11,Michał Małolepszy,251,Paradise,6.0
+11,Michał Małolepszy,252,Circle,7.0
+11,Michał Małolepszy,253,Nie patrz w górę,8.0
+11,Michał Małolepszy,254,John Wick 4,6.0
+11,Michał Małolepszy,159,Oppenheimer,7.0
+11,Michał Małolepszy,255,Platforma,8.0
+11,Michał Małolepszy,256,Linia życia,5.0
+11,Michał Małolepszy,257,Pierwszy śnieg,7.0
+11,Michał Małolepszy,209,Paprika,8.0
+11,Michał Małolepszy,258,"Game Over, Man",2.0
+11,Michał Małolepszy,259,Tenet,7.0
+11,Michał Małolepszy,260,Zenek,1.0
+11,Michał Małolepszy,40,Contratiempo,8.0
+11,Michał Małolepszy,261,Gold,7.0
+11,Michał Małolepszy,262,Player One,6.0
+11,Michał Małolepszy,263,Kler,5.0
+11,Michał Małolepszy,264,Irlandczyk,7.0
+11,Michał Małolepszy,265,Snowden,7.0
+11,Michał Małolepszy,266,Dawca pamięci,7.0
+11,Michał Małolepszy,267,Mroczna wieża,5.0
+11,Michał Małolepszy,268,Pasażerowie,6.0
+11,Michał Małolepszy,201,Lobster,3.0
+11,Michał Małolepszy,269,McImperium,7.0
+11,Michał Małolepszy,270,Czarne lustro,9.0
+12,Michał Bagan,271,Gwiezdne wojny: część III – Zemsta Sithów,10.0
+12,Michał Bagan,272,Straight Outta Compton,8.0
+12,Michał Bagan,273,Nosferatu,3.0
+12,Michał Bagan,226,Breaking Bad,10.0
+12,Michał Bagan,39,Peaky Blinders,10.0
+12,Michał Bagan,274,The Witcher,2.0
+12,Michał Bagan,275,Mac & Devin Go To High School,
+13,Adrian Kemski,74,Skazany na śmierć,8.0
+13,Adrian Kemski,153,Rocky,9.0
+13,Adrian Kemski,4,Lucyfer,10.0
+13,Adrian Kemski,52,Stranger Things,8.0
+13,Adrian Kemski,276,Wikingowie,9.0
+13,Adrian Kemski,277,Avengers,9.0
+13,Adrian Kemski,226,Breaking Bad,4.0
+13,Adrian Kemski,278,Superbarbies,2.0
+13,Adrian Kemski,279,Manos,3.0
+13,Adrian Kemski,280,Cats,3.0
+13,Adrian Kemski,281,No Orchids for Miss Blandish,2.0
+14,Kacper Prusak,153,Rocky,10.0
+14,Kacper Prusak,39,Peaky Blinders,10.0
+14,Kacper Prusak,274,The Witcher,9.0
+14,Kacper Prusak,282,Lupin,9.0
+14,Kacper Prusak,52,Stranger Things,8.0
+14,Kacper Prusak,1,1670,3.0
+14,Kacper Prusak,175,Barbie,2.0
+14,Kacper Prusak,20,Planeta Singli,2.0
+14,Kacper Prusak,214,Suits,1.0
+14,Kacper Prusak,78,Squid Game,1.0
+15,Kamil Suchomski,52,Stranger Things,9.0
+15,Kamil Suchomski,1,1670,8.0
+15,Kamil Suchomski,51,The Walking Dead,9.0
+15,Kamil Suchomski,283,Powrót do przyszłości,9.0
+15,Kamil Suchomski,2,Jak sprzedawać dragi w sieci (szybko),9.0
+15,Kamil Suchomski,23,Forrest Gump,10.0
+15,Kamil Suchomski,255,Platforma,3.0
+15,Kamil Suchomski,284,Nigdzie,6.0
+15,Kamil Suchomski,285,Siła ducha,7.0
+15,Kamil Suchomski,286,Skazania na Shawshank,9.0
+15,Kamil Suchomski,287,Dublerzy,9.0
+15,Kamil Suchomski,78,Squid Game,2.0
+15,Kamil Suchomski,288,Jak rozpętałem drugą wojnę światową,6.0
+15,Kamil Suchomski,219,Shrek,7.0
+15,Kamil Suchomski,289,Titanic,5.0
+15,Kamil Suchomski,290,Avatar,8.0
+15,Kamil Suchomski,291,Szybcy i wściekli,6.0
+15,Kamil Suchomski,292,Vinci,5.0
+15,Kamil Suchomski,293,Dlaczego nie,4.0
+15,Kamil Suchomski,74,Skazany na śmierć,7.0
+15,Kamil Suchomski,222,Incepcja,10.0
+15,Kamil Suchomski,129,Interstellar,9.0
+15,Kamil Suchomski,216,Dom z papieru,9.0
+15,Kamil Suchomski,75,Dexter,5.0
+15,Kamil Suchomski,226,Breaking Bad,7.0
+15,Kamil Suchomski,83,Zielona mila,9.0
+15,Kamil Suchomski,84,365 dni,1.0
+15,Kamil Suchomski,32,John Wick,8.0
+15,Kamil Suchomski,192,Mały Otik,2.0
+15,Kamil Suchomski,215,Nietykalni,9.0
+15,Kamil Suchomski,24,Ex Machina,9.0
+15,Kamil Suchomski,294,Mad Max: na drodze gniewu,8.0
+15,Kamil Suchomski,19,Terminator 2,7.0
+15,Kamil Suchomski,295,Wesele,3.0
+15,Kamil Suchomski,296,Tomb Raider,8.0
+15,Kamil Suchomski,297,Pearl Harbor,8.0
+15,Kamil Suchomski,298,Garfield,4.0
+15,Kamil Suchomski,299,Gdzie jest Nemo?,8.0
+15,Kamil Suchomski,300,"Gulczas, a jak myślisz?",1.0
+15,Kamil Suchomski,301,Kilerów dwóch,9.0
+15,Kamil Suchomski,302,Chłopaki nie płaczą,10.0
+16,Roland Liedtke,1,1670,10.0
+16,Roland Liedtke,303,Nowy Papież,10.0
+16,Roland Liedtke,304,Sukcesja,8.0
+16,Roland Liedtke,305,Ostre Przedmioty,8.0
+16,Roland Liedtke,306,Wielkie Kłamstewka,9.0
+16,Roland Liedtke,307,Ślepnąc od świateł,8.0
+16,Roland Liedtke,308,Fleabag,10.0
+16,Roland Liedtke,309,Opowieść Podręcznej,7.0
+16,Roland Liedtke,4,Lucyfer,7.0
+16,Roland Liedtke,310,Sex Education,8.0
+16,Roland Liedtke,311,Czarnobyl,9.0
+16,Roland Liedtke,52,Stranger Things,8.0
+16,Roland Liedtke,312,Euforia,8.0
+16,Roland Liedtke,313,Better Call Saul,10.0
+16,Roland Liedtke,226,Breaking Bad,9.0
+16,Roland Liedtke,314,Gambit Królowej,9.0
+16,Roland Liedtke,96,Bojack Horseman,9.0
+16,Roland Liedtke,315,Mindhunter,9.0
+16,Roland Liedtke,8,Rojst,8.0
+16,Roland Liedtke,316,Król,7.0
+16,Roland Liedtke,70,Dark,8.0
+16,Roland Liedtke,317,Des,8.0
+16,Roland Liedtke,318,Friends,10.0
+16,Roland Liedtke,319,Gra o tron,8.0
+16,Roland Liedtke,320,Młody Papież,8.0
+16,Roland Liedtke,321,The Act,8.0
+16,Roland Liedtke,322,Wielka Woda,7.0
+16,Roland Liedtke,323,Heweliusz,8.0
+16,Roland Liedtke,324,Czarne Lustro,7.0
+16,Roland Liedtke,276,Wikingowie,6.0
+16,Roland Liedtke,216,Dom z papieru,7.0
+16,Roland Liedtke,39,Peaky Blinders,8.0
+16,Roland Liedtke,325,Kompania Braci,8.0
+16,Roland Liedtke,326,Twin Peaks,10.0
+16,Roland Liedtke,327,LOST,7.0
+16,Roland Liedtke,78,Squid Game,6.0
+16,Roland Liedtke,98,The Office,9.0
+16,Roland Liedtke,328,Wataha,8.0
+16,Roland Liedtke,329,The Last of us,8.0
+16,Roland Liedtke,330,Ostre przedmioty,8.0
+16,Roland Liedtke,331,Ród smoka,8.0
+16,Roland Liedtke,332,The Bear,9.0
+16,Roland Liedtke,333,Fallout,7.0
+16,Roland Liedtke,334,Szogun,8.0
+16,Roland Liedtke,335,Modern Family,8.0
+16,Roland Liedtke,336,Arcane,9.0
+16,Roland Liedtke,337,Dolina Krzemowa,7.0
+16,Roland Liedtke,338,Olive Kitteridge,9.0
+16,Roland Liedtke,339,Problem 3 ciał,7.0
+16,Roland Liedtke,340,The office PL,7.0
+16,Roland Liedtke,76,The Pitt,9.0

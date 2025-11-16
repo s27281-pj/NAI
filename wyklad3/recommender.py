@@ -4,9 +4,12 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 # === Ustawienia ===
-RATINGS_CSV = "train_data/ratings_10.csv"       # columns: userId,movieId,rating
-MOVIES_CSV = "train_data/movies_clean.csv"      # columns: movieId,title
+# RATINGS_CSV = "train_data/ratings_clean.csv"       # columns: userId,movieId,rating
+# MOVIES_CSV = "train_data/movies_clean.csv"      # columns: movieId,title
 TOP_N = 5                                       # ile rekomendacji zwrócić domyślnie
+RATINGS_CSV = "test_data/test_ratings.csv"
+MOVIES_CSV = "test_data/test_movies.csv"
+
 
 
 # === 1. Wczytanie danych ===
@@ -22,7 +25,7 @@ def load_data(ratings_path=RATINGS_CSV, movies_path=MOVIES_CSV):
 # === 2. Budowa macierzy użytkownik × film ===
 def build_user_item_matrix(ratings):
     # pivot: wiersze = userId, kolumny = movieId, wartości = rating
-    user_item = ratings.pivot_table(index='userId', columns='movieId', values='rating_10', aggfunc='mean')
+    user_item = ratings.pivot_table(index='userId', columns='movieId', values='rating', aggfunc='mean')
     # zamień NaN na 0 (brak oceny)
     user_item_filled = user_item.fillna(0)
     return user_item_filled
@@ -114,7 +117,7 @@ def main_example():
     item_sim = build_item_similarity_matrix(user_item)
 
     # wybierz userId którego chcesz rekomendować
-    sample_user_id = user_item.index[0]  # pierwszy użytkownik w danych
+    sample_user_id = user_item.index[1]  # pierwszy użytkownik w danych
     print(f"Generuję rekomendacje dla userId = {sample_user_id}")
 
     recs = recommend_for_user(sample_user_id, user_item, item_sim, movies, top_n=TOP_N, k_sim=20)

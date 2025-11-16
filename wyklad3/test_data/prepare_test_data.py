@@ -39,21 +39,25 @@ for user, movies in data.items():
         })
 
 
-# === 3. Zapis ratings.csv ===
+# === 3. Tworzenie DataFrame dla ocen, filmów i użytkowników ===
 df_ratings = pd.DataFrame(ratings_list)
-df_ratings.to_csv("test_data/test_ratings.csv", index=False)
+df_movies = pd.DataFrame(
+    [{"movieId": mid, "movieName": title} for title, mid in movie_to_id.items()]
+)
+df_users = pd.DataFrame(
+    [{"userId": uid, "userName": uname} for uname, uid in user_to_id.items()]
+)
 
+# === 4. Merging danych w jeden plik test_data.csv ===
+# Połączenie ocen z danymi użytkowników i filmów
+df_combined = (
+    df_ratings
+    .merge(df_users, on="userId")  # Połączenie z użytkownikami
+    .merge(df_movies, on="movieId")  # Połączenie z filmami
+    [["userId", "userName", "movieId", "movieName", "rating"]]  # Wybór kolumn w odpowiedniej kolejności
+)
 
-# === 4. Zapis movies.csv ===
-movies_list = [{"movieId": mid, "title": title} for title, mid in movie_to_id.items()]
-df_movies = pd.DataFrame(movies_list).sort_values(by="movieId")
-df_movies.to_csv("test_data/test_movies.csv", index=False)
+# Zapis złączonych danych
+df_combined.to_csv("test_data.csv", index=False)
 
-
-# === 5. Zapis users.csv ===
-users_list = [{"userId": uid, "userName": uname} for uname, uid in user_to_id.items()]
-df_users = pd.DataFrame(users_list).sort_values(by="userId")
-df_users.to_csv("test_data/test_users.csv", index=False)
-
-
-print("Gotowe! Zapisano test_ratings.csv oraz test_movies.csv oraz test_users.csv")
+print("Gotowe! Zapisano test_data/test_data.csv")
