@@ -50,7 +50,7 @@ Proces przygotowania danych treningowych wymaga następujących kroków:
 3. **Oczyszczanie danych**:
    Oczyść dane, aby przygotować je do dalszego użycia:
    ```bash
-   python3 clean_data_test.py
+   python3 prepare_train_data.py
    ```
 
 ---

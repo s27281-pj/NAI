@@ -9,16 +9,10 @@ import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.neighbors import NearestNeighbors
 
-movies = pd.read_csv('data_train/movies.csv')
-ratings = pd.read_csv('data_train/ratings.csv')
+movies = pd.read_csv('train_data/movies.csv')
+ratings = pd.read_csv('train_data/ratings.csv')
 
-# Removing duplicate rows
-movies.drop_duplicates(inplace=True)
-ratings.drop_duplicates(inplace=True)
 
-# Removing missing values
-movies.dropna(inplace=True)
-ratings.dropna(inplace=True)
 
 # Extracting the genres column
 genres = movies['genres']
@@ -47,3 +41,5 @@ _, recommendations = recommender.kneighbors(genres_encoded[movie_index].toarray(
 
 # Extracting the movie titles from the recommendations
 recommended_movie_titles = movies.iloc[recommendations[0]]['title']
+
+print(recommended_movie_titles)

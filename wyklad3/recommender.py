@@ -4,8 +4,8 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 # === Ustawienia ===
-RATINGS_CSV = "data_train/ratings_10.csv"       # columns: userId,movieId,rating
-MOVIES_CSV = "data_train/movies_clean.csv"      # columns: movieId,title
+RATINGS_CSV = "train_data/ratings_10.csv"       # columns: userId,movieId,rating
+MOVIES_CSV = "train_data/movies_clean.csv"      # columns: movieId,title
 TOP_N = 5                                       # ile rekomendacji zwrócić domyślnie
 
 
