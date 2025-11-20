@@ -171,7 +171,7 @@ while running:
                          (int(x + radius * ax), int(y + radius * ay)),
                          (int(x + radius * ax), int(y + radius * ay)))
 
-    pygame.draw.line(DISPLAY, color_glow, (int(x + 3), int(y + 3)), (int(x + 4), int(y + 6)))
+    pygame.draw.line(DISPLAY, color_glow, (int(x + 3), int(y + 3)), (int(x + 3), int(y + 2)))
     pygame.draw.line(DISPLAY, color_glow, (int(x - 3), int(y + 3)), (int(x - 4), int(y + 6)))
     pygame.draw.line(DISPLAY, color_left, (int(x + 2), int(y + 5)), (int(x), int(y + 9)))
     pygame.draw.line(DISPLAY, color_right, (int(x - 2), int(y + 5)), (int(x), int(y + 9)))
