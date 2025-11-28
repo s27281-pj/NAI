@@ -1,0 +1,15 @@
+2025-11-20 15:48:03 [INFO] Uruchamianie systemu rekomendacji
+2025-11-20 15:48:03 [INFO] Wczytywanie danych...
+2025-11-20 15:48:03 [INFO] Wczytano: 100836 ocen, 9742 filmów
+2025-11-20 15:48:22 [INFO] Dane zapisane do printed_output.txt (sekcja: pierwszych 5 rekordów ocen)
+2025-11-20 15:48:28 [INFO] Dane zapisane do printed_output.txt (sekcja: pierwszych 5 rekordów filmów)
+2025-11-20 15:48:28 [INFO] Budowanie macierzy Użytkownik × Film...
+2025-11-20 15:48:28 [INFO] Macierz ma wymiary: (610, 9724)
+2025-11-20 15:48:52 [INFO] Dane zapisane do printed_output.txt (sekcja: macierzy Użytkownik × Film)
+2025-11-20 15:48:52 [INFO] Obliczanie macierzy podobieństwa filmów...
+2025-11-20 15:48:53 [INFO] Macierz podobieństwa obliczona
+2025-11-20 15:48:57 [INFO] Dane zapisane do printed_output.txt (sekcja: macierzy podobieństwa filmów)
+2025-11-20 15:48:57 [INFO] Generowanie rekomendacji dla użytkownika 1...
+2025-11-20 15:48:57 [INFO] Filmy nieocenione: 9492
+2025-11-20 15:49:09 [INFO] Dane zapisane do printed_output.txt (sekcja: tabeli rekomendacji)
+2025-11-20 15:49:09 [INFO] Rekomendacje wygenerowane
