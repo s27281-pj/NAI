@@ -1,3 +1,5 @@
 pygame>=2.1.0
 scikit-fuzzy>=0.4.2
 numpy>=1.21.0
+scipy
+packaging

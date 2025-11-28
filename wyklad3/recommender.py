@@ -1,8 +1,9 @@
-t# recommender.py
+# recommender.py
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from datetime import datetime
+import argparse
 
 
 # === Ustawienia ===
@@ -274,23 +275,17 @@ def recommend_for_user(user_id, user_item_filled, item_sim_df, movies_df, top_n=
 
 
 # === 6. Prosty przykład użycia ===
-def main_example():
+def main_example(ratings_path, movies_path, user_id=None):
     """
-        Przykładowe uruchomienie systemu rekomendacji:
-        1) Wczytanie danych
-        2) Zbudowanie macierzy ocen i podobieństwa
-        3) Wybranie użytkownika
-        4) Wygenerowanie rekomendacji
+    Przykładowe uruchomienie systemu rekomendacji z podanymi ścieżkami do plików.
     """
     log("Uruchamianie systemu rekomendacji")
-    ratings, movies = load_data()
+    ratings, movies = load_data(ratings_path=ratings_path, movies_path=movies_path)
     user_item = build_user_item_matrix(ratings)
     item_sim = build_item_similarity_matrix(user_item)
 
-
     # =====> TUTAJ ZMIANA UŻYTKOWNIKA <=======
-    # wybierz userId którego chcesz rekomendować
-    sample_user_id = user_item.index[0]  # pierwszy użytkownik w danych
+    sample_user_id = user_item.index[user_id]  # pierwszy użytkownik w danych
     print(f"[INFO] Wybrany userId: {sample_user_id}")
 
     recs = recommend_for_user(sample_user_id, user_item, item_sim, movies, top_n=TOP_N, k_sim=20)
@@ -300,4 +295,13 @@ def main_example():
 
 
 if __name__ == "__main__":
-    main_example()
+    parser = argparse.ArgumentParser(description="System rekomendacji filmów (item-based CF)")
+    parser.add_argument("--ratings", type=str, default=RATINGS_CSV,
+                        help="Ścieżka do pliku CSV z ocenami użytkowników (userId, movieId, rating)")
+    parser.add_argument("--movies", type=str, default=MOVIES_CSV,
+                        help="Ścieżka do pliku CSV z filmami (movieId, title)")
+    parser.add_argument("--userId", type=int, default=None,
+                        help="Id użytkownika, dla którego mają być wygenerowane rekomendacje")
+    args = parser.parse_args()
+
+    main_example(ratings_path=args.ratings, movies_path=args.movies, user_id=args.userId)
