@@ -36,3 +36,4 @@ Aby uruchomić projekt, pobierz poniższe zbiory danych i zapisz je w katalogu `
 3.  Zainstaluj zależności: `pip install -r requirements.txt`
 4.  Uruchom analizę: `jupyter notebook notebooks/wine_analysis.ipynb`
 5.  Uruchom przykład predykcji: `python scripts/wine_inference.py`
+6. 
