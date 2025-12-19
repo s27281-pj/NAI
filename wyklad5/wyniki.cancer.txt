@@ -1,0 +1,15 @@
+C:\Users\cypri\PycharmProjects\NAI\.venv\Scripts\python.exe C:\Users\cypri\PycharmProjects\NAI\wyklad5\cancer_classification.py
+--- RAPORT KLASYFIKACJI ---
+              precision    recall  f1-score   support
+
+   malignant       0.95      0.95      0.95        43
+      benign       0.97      0.97      0.97        71
+
+    accuracy                           0.96       114
+   macro avg       0.96      0.96      0.96       114
+weighted avg       0.96      0.96      0.96       114
+
+
+[INFO] Macierz pomyłek została zapisana jako: confusion_matrix_cancer.png
+
+Process finished with exit code 0
