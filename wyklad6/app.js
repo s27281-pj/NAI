@@ -16,26 +16,28 @@ let oscillator;
 // Tracking control
 let trackingActive = false;
 
-// Mobile-friendly settings
-const DETECT_EVERY_MS = 250;        // stabilniej na telefonach niż 150ms
-const MAX_CONSECUTIVE_FAILS = 3;    // ile razy z rzędu może "nie wykryć", zanim zablokuje
+// =============================
+// Mobile-friendly, MORE SENSITIVE settings
+// =============================
+const DETECT_EVERY_MS = 200;        // szybciej niż 250ms
+const MAX_CONSECUTIVE_FAILS = 2;    // mniej taryfy ulgowej niż 3
 let consecutiveFails = 0;
 
 const detectorOptions = new faceapi.TinyFaceDetectorOptions({
-  inputSize: 320,          // 224/320/416; 320 to dobry kompromis
-  scoreThreshold: 0.3      // niżej = mniej "NO FACE" na gorszej kamerze
+  inputSize: 320,          // 224/320/416; 320 = dobry kompromis
+  scoreThreshold: 0.35     // było 0.3 -> odrobinę pewniejsza detekcja
 });
 
-// progi (tune pod mobile)
-const FACE_TOO_CLOSE_RATIO = 0.70; // >70% szerokości = za blisko (było 0.8, za ostre)
-const EAR_CLOSED_THRESHOLD = 0.19; // 0.21 bywa zbyt czułe na mobile
+// Progi (bardziej czułe / bardziej “agresywne”)
+const FACE_TOO_CLOSE_RATIO = 0.65; // było 0.70 -> szybciej uzna "za blisko"
+const EAR_CLOSED_THRESHOLD = 0.205;// było 0.19 -> łatwiej uzna "oczy zamknięte"
 
 // 1) Start po kliknięciu Accept
 acceptBtn.addEventListener('click', async () => {
   disclaimer.style.display = 'none';
   mainContent.style.display = 'block';
 
-  // AudioContext musi być zainicjowany w wyniku interakcji użytkownika
+  // AudioContext musi być zainicjowany po interakcji użytkownika
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
   await initAI();
@@ -44,7 +46,7 @@ acceptBtn.addEventListener('click', async () => {
 async function initAI() {
   statusDiv.innerText = "Loading AI models...";
   try {
-    // Ładowanie modeli (ścieżki względne)
+    // Ścieżki do modeli (względnie, stabilnie na Pages)
     await faceapi.nets.tinyFaceDetector.loadFromUri('./models');
     await faceapi.nets.faceLandmark68Net.loadFromUri('./models');
 
@@ -63,9 +65,8 @@ async function initAI() {
 
     webcam.onloadedmetadata = async () => {
       try {
-        await webcam.play(); // ważne na mobile
+        await webcam.play();
       } catch (e) {
-        // jeśli play zablokowany, user i tak kliknął accept, zwykle przejdzie
         console.log("webcam play blocked:", e);
       }
 
@@ -85,8 +86,7 @@ function startTracking() {
 }
 
 /**
- * Zamiast setInterval (który może nakładać kolejne detekcje),
- * robimy pętlę setTimeout -> stabilniej na mobile.
+ * setTimeout loop (stabilniej na mobile niż setInterval)
  */
 async function loopDetect() {
   if (!trackingActive) return;
@@ -97,7 +97,7 @@ async function loopDetect() {
     return;
   }
 
-  // jeśli user zatrzymał webcam (rzadkie), nie rób nic
+  // jeśli webcam zatrzymany, nie rób nic
   if (webcam.paused || webcam.ended) {
     setTimeout(loopDetect, DETECT_EVERY_MS);
     return;
@@ -110,10 +110,11 @@ async function loopDetect() {
 
     if (!detections) {
       consecutiveFails++;
+
       if (consecutiveFails >= MAX_CONSECUTIVE_FAILS) {
         triggerAction("USER NOT DETECTED! PLEASE LOOK AT THE SCREEN.");
       } else {
-        // informacyjnie, bez karania od razu
+        // lżejszy status zamiast alarmu przy pojedynczym hiccup
         statusDiv.innerText = `Scanning... (${consecutiveFails}/${MAX_CONSECUTIVE_FAILS})`;
       }
 
@@ -141,8 +142,8 @@ async function loopDetect() {
     const rightEAR = getEAR(rightEye);
     const avgEAR = (leftEAR + rightEAR) / 2;
 
-    // debug (możesz zakomentować)
-    statusDiv.innerText = `BIOMETRIC MONITORING: ACTIVE | EAR=${avgEAR.toFixed(2)} | ratio=${faceSizeRatio.toFixed(2)}`;
+    // Debug status (możesz wywalić jak już działa)
+    statusDiv.innerText = `BIOMETRIC MONITORING: ACTIVE | EAR=${avgEAR.toFixed(3)} | ratio=${faceSizeRatio.toFixed(2)}`;
 
     if (avgEAR < EAR_CLOSED_THRESHOLD) {
       triggerAction("EYES CLOSED! ATTENTION IS MANDATORY.");
@@ -150,7 +151,6 @@ async function loopDetect() {
       resumeAd();
     }
   } catch (err) {
-    // Gdy telefon dławi się na chwilę, nie rób dramatu – spróbuj dalej
     console.error("Detection error:", err);
     statusDiv.innerText = "Tracking hiccup... retrying.";
   }
@@ -159,7 +159,7 @@ async function loopDetect() {
 }
 
 /**
- * EAR (Eye Aspect Ratio) - Oblicza stopień otwarcia oka
+ * EAR (Eye Aspect Ratio) - stopień otwarcia oka
  */
 function getEAR(eye) {
   const v1 = Math.hypot(eye[1].x - eye[5].x, eye[1].y - eye[5].y);
@@ -193,7 +193,6 @@ function stopSqueak() {
 }
 
 function triggerAction(message) {
-  // pauzuj reklamę
   if (!videoAd.paused) {
     videoAd.pause();
   }
@@ -209,9 +208,8 @@ function resumeAd() {
     evilAlert.style.display = 'none';
     stopSqueak();
 
-    // odpalanie wideo na mobile czasem wymaga "gesture" – ale user już kliknął accept
     videoAd.play().catch(() => {
-      // jeśli przeglądarka blokuje autoplay, przynajmniej nie syp w konsoli
+      // autoplay może być blokowany – olać, UX i tak “złe”
     });
   }
 }
