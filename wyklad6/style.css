@@ -1,0 +1,92 @@
+const acceptBtn = document.getElementById('accept-btn');
+const disclaimer = document.getElementById('disclaimer-modal');
+const mainContent = document.getElementById('main-content');
+const videoAd = document.getElementById('videoAd');
+const webcam = document.getElementById('webcam');
+const evilAlert = document.getElementById('evil-alert');
+const alertMsg = document.getElementById('alert-message');
+const statusDiv = document.getElementById('status');
+
+// 1. Initialize after user acceptance
+acceptBtn.addEventListener('click', () => {
+    disclaimer.style.display = 'none';
+    mainContent.style.display = 'block';
+    initAI();
+});
+
+async function initAI() {
+    statusDiv.innerText = "Loading AI models...";
+    try {
+        // Loading models from the /models folder
+        await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+        await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+
+        statusDiv.innerText = "Accessing camera...";
+        const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
+        webcam.srcObject = stream;
+
+        webcam.addEventListener('play', () => {
+            statusDiv.innerText = "BIOMETRIC TRACKING ACTIVE";
+            startTracking();
+        });
+    } catch (err) {
+        statusDiv.innerText = "Fatal Error: Camera access denied.";
+        console.error(err);
+    }
+}
+
+function startTracking() {
+    setInterval(async () => {
+        const detections = await faceapi.detectSingleFace(
+            webcam,
+            new faceapi.TinyFaceDetectorOptions()
+        ).withFaceLandmarks();
+
+        if (!detections) {
+            // Functionality 2: User not looking (face not found)
+            triggerAction("USER NOT DETECTED! PLEASE FACE THE SCREEN.");
+        } else {
+            const landmarks = detections.landmarks;
+            const leftEye = landmarks.getLeftEye();
+            const rightEye = landmarks.getRightEye();
+
+            // Functionality 1: Closed eyes detection (using EAR)
+            const leftEAR = getEAR(leftEye);
+            const rightEAR = getEAR(rightEye);
+            const avgEAR = (leftEAR + rightEAR) / 2;
+
+            // Threshold: 0.21 is a standard value for closed eyes
+            if (avgEAR < 0.21) {
+                triggerAction("EYES CLOSED! ATTENTION IS MANDATORY.");
+            } else {
+                resumeAd();
+            }
+        }
+    }, 150); // Scan every 150ms for high precision
+}
+
+// Eye Aspect Ratio Calculation
+function getEAR(eye) {
+    // Distances between vertical landmarks
+    const v1 = Math.sqrt(Math.pow(eye[1].x - eye[5].x, 2) + Math.pow(eye[1].y - eye[5].y, 2));
+    const v2 = Math.sqrt(Math.pow(eye[2].x - eye[4].x, 2) + Math.pow(eye[2].y - eye[4].y, 2));
+    // Distance between horizontal landmarks
+    const h = Math.sqrt(Math.pow(eye[0].x - eye[3].x, 2) + Math.pow(eye[0].y - eye[3].y, 2));
+
+    return (v1 + v2) / (2.0 * h);
+}
+
+function triggerAction(message) {
+    if (!videoAd.paused) {
+        videoAd.pause();
+    }
+    alertMsg.innerText = message;
+    evilAlert.style.display = 'flex';
+}
+
+function resumeAd() {
+    if (evilAlert.style.display === 'flex') {
+        evilAlert.style.display = 'none';
+        videoAd.play();
+    }
+}

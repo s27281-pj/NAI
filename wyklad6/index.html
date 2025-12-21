@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics Project: Dark Patterns Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+
+    <div id="disclaimer-modal">
+        <div class="modal-content">
+            <h1>Educational Project Disclaimer</h1>
+            <p>This website is an <strong>educational project</strong> designed to demonstrate the ethical risks and "dark patterns" associated with AI development.</p>
+            <p><strong>Goal:</strong> This application aims to force the user to watch an advertisement by using real-time gaze tracking.</p>
+            <p><strong>Artistic Reference:</strong> The project uses a clip from <em>'A Clockwork Orange' (1971)</em> as a symbolic reference to the <strong>Ludovico Technique</strong>, highlighting the dystopian nature of forced digital consumption.</p>
+            <p><strong>Privacy Note:</strong> To function, this app requires webcam access. This demo <strong>does not save</strong> your image, but be aware that such technology can be used for invasive surveillance.</p>
+
+            <div class="modal-actions">
+                <button id="accept-btn">I Understand and Accept</button>
+                <button id="exit-btn" onclick="window.location.href='https://google.com'">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <div id="ad-container">
+            <video id="videoAd" width="800" height="450" controls playsinline>
+                <source src="assets/Clockwork-orange-1971.m4v" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div id="evil-alert">
+                <div class="alert-content">
+                    <h1>⚠️ SYSTEM ALERT ⚠️</h1>
+                    <p id="alert-message">RESUME WATCHING THE AD IMMEDIATELY!</p>
+                    <div class="scanner-line"></div>
+                </div>
+            </div>
+
+            <div id="camera-preview">
+                <video id="webcam" autoplay muted playsinline width="200" height="150"></video>
+                <div id="status">Initializing AI...</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
