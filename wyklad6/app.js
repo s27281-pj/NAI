@@ -49,26 +49,36 @@ function startTracking() {
     setInterval(async () => {
         if (webcam.paused || webcam.ended) return;
 
+        // OPTYMALIZACJA: Zwiększono inputSize do 512 dla lepszej detekcji z bliska
         const detections = await faceapi.detectSingleFace(
             webcam,
-            new faceapi.TinyFaceDetectorOptions()
+            new faceapi.TinyFaceDetectorOptions({ inputSize: 512, scoreThreshold: 0.5 })
         ).withFaceLandmarks();
 
         if (!detections) {
             triggerAction("USER NOT DETECTED! PLEASE LOOK AT THE SCREEN.");
         } else {
-            const landmarks = detections.landmarks;
-            const leftEye = landmarks.getLeftEye();
-            const rightEye = landmarks.getRightEye();
+            // NOWA FUNKCJONALNOŚĆ: Sprawdzanie dystansu (rozmiar twarzy w kadrze)
+            const box = detections.detection.box;
+            const faceSizeRatio = box.width / webcam.videoWidth;
 
-            const leftEAR = getEAR(leftEye);
-            const rightEAR = getEAR(rightEye);
-            const avgEAR = (leftEAR + rightEAR) / 2;
-
-            if (avgEAR < 0.21) {
-                triggerAction("EYES CLOSED! ATTENTION IS MANDATORY.");
+            if (faceSizeRatio > 0.8) {
+                // Jeśli twarz zajmuje ponad 80% szerokości obrazu, użytkownik jest za blisko
+                triggerAction("TOO CLOSE! SYSTEM CANNOT VERIFY BIOMETRICS. STEP BACK.");
             } else {
-                resumeAd();
+                const landmarks = detections.landmarks;
+                const leftEye = landmarks.getLeftEye();
+                const rightEye = landmarks.getRightEye();
+
+                const leftEAR = getEAR(leftEye);
+                const rightEAR = getEAR(rightEye);
+                const avgEAR = (leftEAR + rightEAR) / 2;
+
+                if (avgEAR < 0.21) {
+                    triggerAction("EYES CLOSED! ATTENTION IS MANDATORY.");
+                } else {
+                    resumeAd();
+                }
             }
         }
     }, 150);
@@ -96,6 +106,10 @@ function stopSqueak() {
         oscillator = null;
     }
 }
+
+/**
+ * EAR (Eye Aspect Ratio) - Oblicza stopień otwarcia oka
+ */
 
 function getEAR(eye) {
     const v1 = Math.sqrt(Math.pow(eye[1].x - eye[5].x, 2) + Math.pow(eye[1].y - eye[5].y, 2));

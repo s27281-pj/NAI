@@ -69,6 +69,15 @@ Ze względu na wykorzystanie kamery i modeli SI, projekt musi być uruchomiony p
 
 ---
 
+### **⚠️ Znane ograniczenia techniczne i optymalizacja**
+Podczas testów zidentyfikowano trudności z detekcją twarzy znajdujących się w skrajnie bliskiej odległości od kamery (poniżej 20 cm). Wynika to ze specyfiki modelu `TinyFaceDetector`, który wymaga widoczności konturów głowy do poprawnej klasyfikacji.
+
+**Rozwiązanie:**
+1. **Zwiększenie rozdzielczości wejściowej:** W konfiguracji detektora parametr `inputSize` został zwiększony do **512**. Pozwala to na analizę większej ilości detali twarzy przy dużym zbliżeniu.
+2. **Alert dystansu:** Wprowadzono logikę monitorującą proporcję rozmiaru twarzy do szerokości kadru. Jeśli twarz zajmuje >80% obrazu, system wymusza na użytkowniku odsunięcie się od ekranu.
+
+---
+
 ### **⚖️ Nota etyczna**
 > **Projekt powstał wyłącznie w celach edukacyjnych.** Jego zadaniem jest demonstracja, w jaki sposób monitorowanie biometryczne i algorytmy śledzenia wzroku mogą zostać wykorzystane przeciwko autonomii i prywatności użytkownika (tzw. **dark patterns**). 
 > 
