@@ -6,7 +6,7 @@
 
 ## 👥 Autorzy
 * **Cyprian Czerwiński**
-* **Roland Liedke**
+* **Roland Liedtke**
 
 ---
 
