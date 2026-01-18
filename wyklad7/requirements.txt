@@ -1,0 +1,4 @@
+# Wymagane środowisko
+# Python 3.9+
+ale-py
+gymnasium
