@@ -11,3 +11,16 @@ Dynamic programming (DP) — is a class of solution methods for solving sequenti
 Monte Carlo methods — A class of methods for learning of value functions, which estimates the value of a state by running many trials starting at that state, then averages the total rewards received on those trials.
 Temporal Difference (TD) algorithms — A class of learning methods, based on the idea of comparing temporally successive predictions. Possibly the single most fundamental idea in all of reinforcement learning.
 Model — The agent’s view of the environment, which maps state-action pairs to probability distributions over states. Note that not every reinforcement learning agent uses a model of its environment
+
+
+Pacman (Atari):
+
+Stan = obraz (210×160×3)
+
+Akcje = dyskretne (NOOP, LEFT, RIGHT, UP, DOWN…)
+
+Nagroda = punkty z gry
+
+❌ Q-table NIE DZIAŁA
+
+✅ Deep Reinforcement Learning (DQN)

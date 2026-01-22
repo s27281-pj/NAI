@@ -1,116 +1,57 @@
 import gymnasium as gym
 import ale_py
-import time
-import random
-import pygame
 
-# =====================================================
-# Rejestracja ALE
-# =====================================================
+
+# =======================
+# ======== AGENT ========
+# =======================
+class Agent:
+    def __init__(self, action_space):
+        self.action_space = action_space
+
+    def act(self, observation):
+        return self.action_space.sample()
+
+    def learn(self, *args):
+        pass
+
+
+# Rejestruje środowisko Atari (ALE) w Gymnasium
 gym.register_envs(ale_py)
 
-# =====================================================
-# Wrapper ograniczający akcje Pac-Mana
-# =====================================================
-class PacmanActionWrapper(gym.ActionWrapper):
-    """
-    Ogranicza akcje Pac-Mana do 5 podstawowych:
-    0 - NOOP
-    1 - UP
-    2 - RIGHT
-    3 - LEFT
-    4 - DOWN
-    """
-    def __init__(self, env):
-        super().__init__(env)
-        self.valid_actions = [0, 1, 2, 3, 4]
-        self.action_space = gym.spaces.Discrete(len(self.valid_actions))
 
-    def action(self, act):
-        return self.valid_actions[act]
+# Ładuje:
+# - Emulator Atari (Arcade Learning Environment),
+# - ROM Pacman jako obiekt pythonowy,
+# - human - otwiera okno 60 klatek/s
+# OPTYMALIZACJA UCZENIA - Zmien render_mode na None
+# - rgb_array - do nagrywania, brak okna LIVE
+env = gym.make("ALE/Pacman-v5", render_mode="rgb_array")
 
 
-# =====================================================
-# Sterowanie MANUALNE (klawiatura)
-# =====================================================
-def manual_controller():
-    pygame.init()
-    pygame.display.set_mode((1, 1))
-
-    current_action = 0  # NOOP na start
-    running = True
-
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    running = False
-                elif event.key == pygame.K_UP:
-                    current_action = 1
-                elif event.key == pygame.K_RIGHT:
-                    current_action = 2
-                elif event.key == pygame.K_LEFT:
-                    current_action = 3
-                elif event.key == pygame.K_DOWN:
-                    current_action = 4
-
-        yield current_action
-
-    pygame.quit()
-    yield None
+# Wrapper nagrywa wideo z rozgrywki, episode_trigger - określa które rozgrywki nagrywać
+env = gym.wrappers.RecordVideo(
+    env,
+    episode_trigger=lambda num: num % 2 == 0,
+    video_folder="recordings/",
+    name_prefix="video",
+)
+# env.reset() - resetuje grę, ustawia pacmana na start, zwraca pierwszą klatkę
+# env.step() - zwraca 1 klatkę RGB
 
 
-# =====================================================
-# Sterowanie AUTOMATYCZNE (BOT / RL placeholder)
-# =====================================================
-def bot_controller():
-    while True:
-        yield random.randint(0, 3)
+# Reset the environment to generate the first observation
+agent = Agent(env.action_space)
 
-# =====================================================
-# GŁÓWNA PĘTLA GRY
-# =====================================================
-def run_game(controller):
-    env = gym.make("ALE/Pacman-v5", render_mode="human")
-    env = PacmanActionWrapper(env)
+observation, info = env.reset(seed=42)
 
-    obs, info = env.reset()
+for _ in range(1000):
+    action = agent.act(observation)
+    observation, reward, terminated, truncated, info = env.step(action)
 
-    for action in controller:
-        if action is None:
-            break
+    agent.learn(observation, action, reward, terminated)
 
-        obs, reward, terminated, truncated, info = env.step(action)
+    if terminated or truncated:
+        observation, info = env.reset()
 
-        if terminated or truncated:
-            time.sleep(1)
-            obs, info = env.reset()
-
-        time.sleep(0.03)
-
-    env.close()
-
-# =====================================================
-# ENTRY POINT
-# =====================================================
-if __name__ == "__main__":
-    print("Wybierz tryb sterowania:")
-    print("1 - Sterowanie manualne (klawiatura)")
-    print("2 - Sterowanie automatyczne (bot / RL)")
-
-    choice = input("Twój wybór (1/2): ").strip()
-
-    if choice == "1":
-        print("Tryb MANUALNY: użyj strzałek, ESC aby wyjść")
-        controller = manual_controller()
-    elif choice == "2":
-        print("Tryb AUTOMATYCZNY: bot steruje Pac-Manem")
-        controller = bot_controller()
-    else:
-        print("Niepoprawny wybór")
-        exit(0)
-
-    run_game(controller)
+env.close()
