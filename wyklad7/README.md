@@ -46,7 +46,7 @@
 
 
 ### Struktura plików
-
+```plaintext
 │
 ├── README.md              # Dokumentacja projektu
 ├── main.py                # Główny skrypt z agentem RL
