@@ -1,3 +1,15 @@
+"""
+===============================================
+Atari Pacman Reinforcement Learning Environment
+===============================================
+
+Autor: Roland i Cyprian
+Data: 2026-01-23
+Opis:
+    Przykładowa implementacja agenta RL (Random) dla gry Atari Pacman
+    przy użyciu bibliotek Gymnasium i ALE (Arcade Learning Environment).
+"""
+
 import gymnasium as gym
 import ale_py
 import cv2
@@ -20,8 +32,6 @@ class AtariPreprocess(gym.ObservationWrapper):
 # =======================
 # ======== AGENT ========
 # =======================
-
-
 class Agent:
     def __init__(self, action_space):
         self.action_space = action_space
