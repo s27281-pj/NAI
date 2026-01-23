@@ -99,4 +99,4 @@ for episode in range(num_episodes):
 env.close()
 print("Koniec symulacji.")
 
-#zmiany
+#zmiana
