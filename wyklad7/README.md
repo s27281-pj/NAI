@@ -1,26 +1,57 @@
-Agent — the learner and the decision maker.
-Environment — where the agent learns and decides what actions to perform.
-Action — a set of actions which the agent can perform.
-State — the state of the agent in the environment.
-Reward — for each action selected by the agent the environment provides a reward. Usually a scalar value.
-Policy — the decision-making function (control strategy) of the agent, which represents a mapping from situations to actions.
-Value function — mapping from states to real numbers, where the value of a state represents the long-term reward achieved starting from that state, and executing a particular policy.
-Function approximator — refers to the problem of inducing a function from training examples. Standard approximators include decision trees, neural networks, and nearest-neighbor methods
-Markov decision process (MDP) — A probabilistic model of a sequential decision problem, where states can be perceived exactly, and the current state and action selected determine a probability distribution on future states. Essentially, the outcome of applying an action to a state depends only on the current action and state (and not on preceding actions or states).
-Dynamic programming (DP) — is a class of solution methods for solving sequential decision problems with a compositional cost structure. Richard Bellman was one of the principal founders of this approach.
-Monte Carlo methods — A class of methods for learning of value functions, which estimates the value of a state by running many trials starting at that state, then averages the total rewards received on those trials.
-Temporal Difference (TD) algorithms — A class of learning methods, based on the idea of comparing temporally successive predictions. Possibly the single most fundamental idea in all of reinforcement learning.
-Model — The agent’s view of the environment, which maps state-action pairs to probability distributions over states. Note that not every reinforcement learning agent uses a model of its environment
+# Pacman ALE Atari
+---
 
 
-Pacman (Atari):
+## 👥 Autorzy
+* **Cyprian Czerwiński**
+* **Roland Liedtke**
+---
 
-Stan = obraz (210×160×3)
 
-Akcje = dyskretne (NOOP, LEFT, RIGHT, UP, DOWN…)
+## 📖 Opis projektu
 
-Nagroda = punkty z gry
+#### Projekt demonstruje wykorzystanie środowiska Atari Pacman w Pythonie przy użyciu **Gymnasium** i **Arcade Learning Environment (ALE)**. Celem jest stworzenie prostego agenta RL (obecnie losowego) oraz nagrywanie rozgrywek wideo w celu analizy działania agenta. Projekt jest również przykładem przetwarzania obserwacji z gier Atari (skalowanie, grayscale, normalizacja) i integracji z wrapperem nagrywającym rozgrywki.
+---
 
-❌ Q-table NIE DZIAŁA
 
-✅ Deep Reinforcement Learning (DQN)
+## 🛠 Funkcjonalności
+* Integracja z Atari ALE poprzez Gymnasium
+* Losowy agent RL dla gry Pacman
+* Preprocessing obrazu:
+  * Konwersja do odcieni szarości
+  * Zmiana rozmiaru do 84x84
+  * Normalizacja pikseli do [0,1]
+* Nagrywanie rozgrywek wideo co drugi epizod
+* Obsługa wielu epizodów i liczenie punktów
+---
+
+
+## 🔬 Szczegóły techniczne
+* Język: **Python 3.10+**
+* Biblioteki:
+  * `gymnasium`
+  * `ale-py`
+  * `opencv-python`
+  * `numpy`
+* Środowisko Atari: `"ALE/Pacman-v5"`
+* Wrapper `RecordVideo` do nagrywania wideo
+* Wrapper `ObservationWrapper` do preprocessing obrazu
+---
+
+
+### **🚀 Uruchomienie lokalne**
+- ```pip install -r requirements.txt```
+- ```python3 main.py```
+---
+
+
+### Struktura plików
+
+│
+├── README.md              # Dokumentacja projektu
+├── main.py                # Główny skrypt z agentem RL
+├── q_learning.py          # Przykładowy skrypt z agentem RL 
+├── recordings/            # Folder z nagraniami wideo epizodów
+└── requirements.txt       # Lista zależności (opcjonalnie)
+
+---
