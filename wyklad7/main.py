@@ -61,7 +61,7 @@ gym.register_envs(ale_py)
 # OPTYMALIZACJA UCZENIA - Zmien obs_type na grayscale
 env = gym.make(
     "ALE/Pacman-v5",
-    render_mode="None",
+    render_mode="rgb_array",
     obs_type="rgb"
 )
 # Wyświetla możliwe i przykładowe akcje
